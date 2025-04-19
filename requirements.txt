@@ -1,4 +1,4 @@
 flask
 flask-cors
-pymongo
+pymongo>=4.3
 certifi
