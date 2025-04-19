@@ -1,6 +1,3 @@
-flask 
-request
-jsonify
-CORS
-MongoClient
-datetime
+flask
+flask-cors
+pymongo
