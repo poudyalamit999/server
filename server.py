@@ -9,7 +9,7 @@ CORS(app)
 
 # Load MongoDB URI from environment variable
 mongo_uri = os.environ.get("MONGO_URI")
-client = MongoClient(mongo_uri)
+client = MongoClient(mongo_uri, tlsCAFile=certifi.where())
 db = client['Gps']
 collection = db['Gps']
 
