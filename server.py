@@ -2,12 +2,14 @@ from flask import Flask, request, jsonify
 from flask_cors import CORS
 from pymongo import MongoClient
 import datetime
+import os
 
 app = Flask(__name__)
-CORS(app)  # Enable CORS for cross-origin requests
+CORS(app)
 
-# Replace this URI with your MongoDB Atlas connection string
-client = MongoClient("mongodb+srv://user:user@cluster0.kdxcuxk.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
+# Load MongoDB URI from environment variable
+mongo_uri = os.environ.get("MONGO_URI")
+client = MongoClient(mongo_uri)
 db = client['Gps']
 collection = db['Gps']
 
@@ -31,4 +33,5 @@ def upload_data():
         return jsonify({"status": "error", "message": str(e)}), 500
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000)
+    port = int(os.environ.get("PORT", 5000))  # Use port from environment
+    app.run(host='0.0.0.0', port=port)
