@@ -9,7 +9,7 @@ app = Flask(__name__)
 CORS(app)
 
 # Load MongoDB URI from environment variable
-mongo_uri = os.environ.get("MONGO_URI")
+mongo_uri = "mongodb+srv://user:user@cluster0.kdxcuxk.mongodb.net/?retryWrites=true&w=majority&tls=true&ssl=true"
 client = MongoClient(mongo_uri, tlsCAFile=certifi.where())
 db = client['Gps']
 collection = db['Gps']
