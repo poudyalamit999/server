@@ -18,8 +18,8 @@ collection = db['Gps']
 def upload_data():
     try:
         data = request.get_json()
-        lat = data.get('lat')
-        lng = data.get('lng')
+        lat = data.get('latitude')
+        lng = data.get('longitude')
         timestamp = datetime.datetime.utcnow()
 
         doc = {
